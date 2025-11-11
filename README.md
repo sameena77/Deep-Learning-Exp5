@@ -47,6 +47,7 @@ STEP 6: Visualization
 
 **Register Number:** 2305002019
 
+ ```
  import numpy as np, pandas as pd, matplotlib.pyplot as plt
  from sklearn.preprocessing import MinMaxScaler
  from keras import layers, Sequential
@@ -71,6 +72,8 @@ STEP 6: Visualization
  plt.plot(inputs,color='yellow',label='Real Price')
  plt.plot(range(60,len(inputs)),pred,color='violet',label='Predicted')
  plt.title('Google Stock Price Prediction'); plt.xlabel('Time'); plt.ylabel(
+
+```
 
 
 
