@@ -48,30 +48,35 @@ STEP 6: Visualization
 **Register Number:** 2305002019
 
  ```
- import numpy as np, pandas as pd, matplotlib.pyplot as plt
- from sklearn.preprocessing import MinMaxScaler
- from keras import layers, Sequential
+ 
+import numpy as np, pandas as pd, matplotlib.pyplot as plt
+from sklearn.preprocessing import MinMaxScaler
+from keras import layers, Sequential
 
-  # Load and scale data
- train = pd.read_csv('trainset1.csv'); test = pd.read_csv('testset1.csv')
- sc = MinMaxScaler((0,1))
- train_scaled = sc.fit_transform(train.iloc[:,1:2])
- # Generate training data
- X_train = np.array([train_scaled[i-60:i,0] for i in range(60,len(train_scal
- y_train = np.array([train_scaled[i,0] for i in range(60,len(train_scaled))]
- X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], 1)
- # Build and train model
- model = Sequential([layers.SimpleRNN(40,input_shape=(60,1)), layers.Dense(1
- model.compile('adam','mse')
- model.fit(X_train,y_train,epochs=25,batch_size=64,verbose=0)
- # Prepare input and test data
- inputs = pd.concat((train['Open'], test['Open']), axis=0).values.reshape(-1
- X_test = np.array([sc.transform(inputs)[i-60:i,0] for i in range(60,len(inp
- # Predict and visualize
- pred = sc.inverse_transform(model.predict(X_test))
- plt.plot(inputs,color='yellow',label='Real Price')
- plt.plot(range(60,len(inputs)),pred,color='violet',label='Predicted')
- plt.title('Google Stock Price Prediction'); plt.xlabel('Time'); plt.ylabel(
+# Load and scale data
+train = pd.read_csv('trainset1.csv'); test = pd.read_csv('testset1.csv')
+sc = MinMaxScaler((0,1))
+train_scaled = sc.fit_transform(train.iloc[:,1:2])
+
+# Generate training data
+X_train = np.array([train_scaled[i-60:i,0] for i in range(60,len(train_scaled))])
+y_train = np.array([train_scaled[i,0] for i in range(60,len(train_scaled))])
+X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], 1)
+
+# Build and train model
+model = Sequential([layers.SimpleRNN(40,input_shape=(60,1)), layers.Dense(1)])
+model.compile('adam','mse')
+model.fit(X_train,y_train,epochs=25,batch_size=64,verbose=0)
+
+# Prepare input and test data
+inputs = pd.concat((train['Open'], test['Open']), axis=0).values.reshape(-1,1)
+X_test = np.array([sc.transform(inputs)[i-60:i,0] for i in range(60,len(inputs))]).reshape(-1,60,1)
+
+# Predict and visualize
+pred = sc.inverse_transform(model.predict(X_test))
+plt.plot(inputs,color='yellow',label='Real Price')
+plt.plot(range(60,len(inputs)),pred,color='violet',label='Predicted')
+plt.title('Google Stock Price Prediction'); plt.xlabel('Time'); plt.ylabel('Price'); plt.legend(); plt.show()
 
 ```
 
