@@ -86,7 +86,6 @@ plt.title('Google Stock Price Prediction'); plt.xlabel('Time'); plt.ylabel('Pric
 
 Training Loss Over Epochs Plot
 
-Include your plot here
 
 **True Stock Price, Predicted Stock Price vs time**
 
@@ -96,7 +95,3 @@ Include your plot here
 **RESULT**
 
 Thus the stock price is predicted using Recurrent Neural Networks successfully.
-
-**RESULT**
-
-Include your result here
