@@ -9,8 +9,7 @@ To develop a Recurrent Neural Network (RNN) model for predicting stock prices us
 **THEORY**
 
 **Neural Network Model**
-
-<img width="591" height="295" alt="image" src="https://github.com/user-attachments/assets/99770878-340d-494e-8277-aea1cade32dc" />
+<img width="549" height="257" alt="image" src="https://github.com/user-attachments/assets/9e3e19cf-8c9c-4ca7-bf24-cca5f837771d" />
 
 
 **DESIGN STEPS**
