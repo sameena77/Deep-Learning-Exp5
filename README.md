@@ -10,7 +10,8 @@ To develop a Recurrent Neural Network (RNN) model for predicting stock prices us
 
 **Neural Network Model**
 
-Include the neural network model diagram.
+<img width="591" height="295" alt="image" src="https://github.com/user-attachments/assets/99770878-340d-494e-8277-aea1cade32dc" />
+
 
 **DESIGN STEPS**
 
